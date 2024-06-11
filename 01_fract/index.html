@@ -1,0 +1,67 @@
+<!doctype html>
+
+<html lang="ru" class="notranslate" translate="no">
+  <head>
+    <script src="./output/main.js"></script>
+    <meta name="google" content="notranslate" />
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="m.png" type="image/png" />
+    <link rel="stylesheet" href="index.css">
+    <title>fractalchik)))</title>
+  </head>
+  <body>
+    <ul><a href="../index.html" style="font-size: x-large"><button class="glow-on-hover" type="button">Back</button></a><br></ul>
+    <form>
+      JuliaColor:
+      <input id="JuliaColor" type="color" value="#33054C" />
+      JuliaSpeed:
+      <input
+        id="JuliaSpeed"
+        type="range"
+        min="0.01"
+        max="2"
+        step="0.01"
+        value="1"
+      />
+    </form>
+    <canvas
+      id="myCan"
+      width="1500px"
+      height="1300px"
+      style="border: 1px solid white"
+    ></canvas>
+    <canvas id="glcanvas" width="200" height="200"></canvas>
+    <script type="module">
+      import * as damn from "./mylib.js";
+
+      function colorHandle() {
+        let tag = document.getElementById("JuliaColor");
+        let x = tag.value,
+          r = eval("0x" + x[1] + x[2]),
+          g = eval("0x" + x[3] + x[4]),
+          b = eval("0x" + x[5] + x[6]);
+        damn.setColor(r / 255, g / 255, b / 255);
+      }
+
+      function speedHandle() {
+        let tag = document.getElementById("JuliaSpeed");
+        let x = tag.value;
+        damn.setSpeed(x);
+      }
+
+      window.addEventListener("load", () => {
+        document.getElementById("JuliaColor").oninput = () => colorHandle();
+        document.getElementById("JuliaSpeed").oninput = () => speedHandle();
+        damn.initGL();
+        const draw = () => {
+          // drawing
+          damn.render();
+
+          // animation register
+          window.requestAnimationFrame(draw);
+        };
+        draw();
+      });
+    </script>
+  </body>
+</html>
