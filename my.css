@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100vh;
+    height: 10vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -70,15 +70,37 @@ body {
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
 }
+
 H1 {
-  font-size: 50px;
-  font-weight: normal;
-  cursor: pointer;
-  text-shadow: 0 0 15px #999;
-  color: transparent;
-  transition: all .5s;
+    -webkit-animation: color-change 5s infinite;
+    -moz-animation: color-change 5s infinite;
+    -o-animation: color-change 5s infinite;
+    -ms-animation: color-change 5s infinite;
+    animation: color-change 10s infinite;
 }
 
-H1:hover {
-  text-shadow: 0 0 0 #333;
+@-webkit-keyframes color-change {
+    100% { color: red; }
+    30% { color: green; }
+    80% { color: blue; }  
+}
+@-moz-keyframes color-change {      
+    100% { color: red; }
+    30% { color: green; }
+    80% { color: blue; }  
+}
+@-ms-keyframes color-change {
+    100% { color: red; }
+    30% { color: green; }
+    80% { color: blue; }  
+}
+@-o-keyframes color-change { 
+    100% { color: red; }
+    30% { color: green; }
+    80% { color: blue; }  
+}
+@keyframes color-change { 
+    100% { color: red; }
+    30% { color: green; }
+    80% { color: blue; }  
 }
