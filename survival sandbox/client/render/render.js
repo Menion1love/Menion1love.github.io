@@ -419,18 +419,20 @@ class backRender {
         }
       }
     }
-    else{   
-      if (Math.round(this.timer.localTime) % 5 == 0 && block){
-        if (satiety == 0 && hp > 0)
-          hp -= 4
-        if (satiety >= 4)
-          satiety -= 4
-        block = false
+    else
+    {   
+      if (intro != 0) {
+        if (Math.round(this.timer.localTime) % 5 == 0 && block){
+          if (satiety == 0 && hp > 0)
+            hp -= 4
+          if (satiety >= 4)
+            satiety -= 4
+          block = false
+        }
+        if (Math.round(this.timer.localTime) % 5 != 0)
+          block = true
+          inputResponse(this, interf, move, bat, ver, shop);
       }
-      if (Math.round(this.timer.localTime) % 5 != 0)
-        block = true
-      if (intro != 0)
-        inputResponse(this, interf, move, bat, ver, shop);
     }
       
     // Responses and uniform updates
